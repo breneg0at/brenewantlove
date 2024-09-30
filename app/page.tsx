@@ -53,7 +53,10 @@ export default function Home() {
           </div>
 
           <FadeInSection>
-            <button className="saleButton">Criar nosso álbum</button>
+            <button className="saleButton">Criar álbum
+                <span className="blinking-dot"></span>
+
+            </button>
           </FadeInSection>
         </div>
       </main>

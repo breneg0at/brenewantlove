@@ -58,7 +58,7 @@ body {
   padding: 1rem 2rem;
   width: 100%;
   max-width: 40.4rem;
-  border-radius: 0.8rem;
+  border-radius: 0.3rem;
   font-size: 2rem;
   background-color: var(--primary-color);
   color: #fff;
@@ -67,4 +67,31 @@ body {
   border: none;
   transition: all 0.3s ease-in-out;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.blinking-dot {
+  display: inline-block;
+  width: 1.5rem;  
+  height: 1.5rem; 
+  background-color: #28a745; 
+  border-radius: 50%;
+  position: absolute;
+  top: 0.2rem; 
+  right: -0.5rem; 
+  transform: translateY(-50%);
+  animation: blinking 1.5s infinite;
+}
+
+
+@keyframes blinking {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
