@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-size: 62.5%;
+}
+
+:root {
+  --bg-color: #0E0824;
+  --primary-color: #F5A623;
+  --button-color: #34CB55;
+  --title-one: 4rem;
+  --title-two: 3.2rem;
+  --subtitle: 2.2rem;
+  --text-one: 1.8rem;
+  --text-two: 1.4rem;
+  --font-primary: var(--font-inder);
+}
+
+body {
+  font-family: var(--font-primary), sans-serif;
+  color: #fff;
+  background-color: var(--bg-color);
+}
+
+.title {
+  font-size: var(--title-one);
+  font-weight: 800;
+  line-height: 4.7rem;
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: var(--subtitle);
+  line-height: 2.6rem;
+}
+
+.textOne {
+  font-weight: 200;
+  font-size: var(--text-one);
+  line-height: 2.1rem;
+}
+
+.primaryButton {
+  background: var(--bg-color);
+  color: #fff;
+  height: 6rem;
+  width: 100%;
+  max-width: 40.4rem;
+  border: 1px solid var(--primary-color);
+  font-size: 1.3rem;
+  border-radius: 0.3rem;
+}
+
+.saleButton {
+  height: 6rem;
+  width: 100%;
+  max-width: 40.4rem;
+  border-radius: 0.3rem;
+  font-size: 3.2rem;
+  background-color: var(--primary-color);
+  color: #fff;
+}
