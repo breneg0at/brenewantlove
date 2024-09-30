@@ -12,10 +12,9 @@ export default function Home() {
         <div className="flex flex-col gap-8">
           <div className="flex flex-rol items-center mx-auto">
             <div className="w-20 h-28">
-
-          <Image src={logo} alt="Logo"/>
+              <Image src={logo} alt="Logo" />
             </div>
-          <p className="text-2xl font-extrabold">PolaLov3</p>
+            <p className="text-2xl font-extrabold">PolaLov3</p>
           </div>
           <h1 className="title text-[var(--primary-color)]">
             Guarde memórias com quem você ama!
@@ -40,22 +39,22 @@ export default function Home() {
                   />
                 </div>
               </FadeInSection>
-                <FadeInSection>
-              <div className="overflow-hidden p-4">
+              <FadeInSection>
+                <div className="overflow-hidden p-4">
                   <Image
                     src={image2}
                     alt="Foto do seu site"
                     className="transition-transform duration-300 ease-in-out transform hover:scale-105"
                   />
-              </div>
-                </FadeInSection>
+                </div>
+              </FadeInSection>
             </div>
           </div>
 
           <FadeInSection>
-            <button className="saleButton">Criar álbum
-                <span className="blinking-dot"></span>
-
+            <button className="saleButton">
+              Criar álbum
+              <span className="blinking-dot"></span>
             </button>
           </FadeInSection>
         </div>

@@ -25,7 +25,7 @@ export default function ToggleButton() {
         }`}
         onClick={() => setSelectedOption("B")}
       >
-        Plano com envio pelo WhatsAp - R$29,90
+        Plano com envio pelo WhatsApp - R$29,90
       </button>
     </div>
   );
