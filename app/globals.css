@@ -26,7 +26,7 @@ body {
 
 .title {
   font-size: var(--title-one);
-  font-weight: 800;
+  font-weight: 200;
   line-height: 4.7rem;
 }
 
