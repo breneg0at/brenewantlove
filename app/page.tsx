@@ -10,9 +10,9 @@ export default function Home() {
     <div className="bg-[var(--bg-color)] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <div className="flex flex-col gap-8">
-          <div className="flex flex-rol items-center mx-auto">
-            <div className="w-20 h-28">
-              <Image src={logo} alt="Logo" />
+          <div className="flex flex-rol items-center mx-auto gap-1">
+            <div>
+              <Image src={logo} alt="Logo" width={38} height={38}/>
             </div>
             <p className="text-2xl font-extrabold">PolaLov3</p>
           </div>
