@@ -11,7 +11,7 @@ export default function Home() {
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <div className="flex flex-col gap-8">
           <div className="flex flex-rol items-center mx-auto">
-            <div className="w-28 h-28">
+            <div className="w-20 h-28">
 
           <Image src={logo} alt="Logo"/>
             </div>
@@ -45,7 +45,7 @@ export default function Home() {
                   <Image
                     src={image2}
                     alt="Foto do seu site"
-                    className="transition-transform duration-300 ease-in-out transform hover:scale-110"
+                    className="transition-transform duration-300 ease-in-out transform hover:scale-105"
                   />
                 </FadeInSection>
               </div>
