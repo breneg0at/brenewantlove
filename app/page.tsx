@@ -32,7 +32,7 @@ export default function Home() {
             <p>Como vai ficar 👇</p>
             <div className="flex justify-between flex-row align-middle items-center mx-auto gap-4 ">
               <FadeInSection>
-                <div className="overflow-hidden">
+                <div className="overflow-hidden p-4">
                   <Image
                     src={image1}
                     alt="Foto do seu site"
@@ -40,15 +40,15 @@ export default function Home() {
                   />
                 </div>
               </FadeInSection>
-              <div className="overflow-hidden">
                 <FadeInSection>
+              <div className="overflow-hidden p-4">
                   <Image
                     src={image2}
                     alt="Foto do seu site"
                     className="transition-transform duration-300 ease-in-out transform hover:scale-105"
                   />
-                </FadeInSection>
               </div>
+                </FadeInSection>
             </div>
           </div>
 
