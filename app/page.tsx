@@ -3,7 +3,10 @@ import ToggleButton from "./components/togglebutton";
 import image1 from "../assets/fotoDoProjeto1.png";
 import image2 from "../assets/fotoDoProjeto2.png";
 import logo from "../assets/PolaLov3.png";
+import insta from "../assets/instagramLogo.png";
+import tiktok from "../assets/tiktokLogo.png";
 import FadeInSection from "./components/fadeInSection";
+import SaleButton from "./components/saleButton";
 
 export default function Home() {
   return (
@@ -12,7 +15,7 @@ export default function Home() {
         <div className="flex flex-col gap-8">
           <div className="flex flex-rol items-center mx-auto gap-1">
             <div>
-              <Image src={logo} alt="Logo" width={38} height={38}/>
+              <Image src={logo} alt="Logo" width={38} height={38} />
             </div>
             <p className="text-2xl font-extrabold">PolaLov3</p>
           </div>
@@ -28,7 +31,7 @@ export default function Home() {
           <ToggleButton />
 
           <div className="flex-col w-[90%] text-center justify-center gap-4 mx-auto">
-            <p>Como vai ficar 👇</p>
+            <p className="subtitle">Como vai ficar 👇</p>
             <div className="flex justify-between flex-row align-middle items-center mx-auto gap-4 ">
               <FadeInSection>
                 <div className="overflow-hidden p-4">
@@ -51,12 +54,46 @@ export default function Home() {
             </div>
           </div>
 
-          <FadeInSection>
-            <button className="saleButton">
-              Criar álbum
-              <span className="blinking-dot"></span>
-            </button>
-          </FadeInSection>
+          <SaleButton />
+        </div>
+
+        <div className="flex flex-col gap-8 mt-11 mb-11">
+          <div className="flex flex-col items-center gap-8">
+            <FadeInSection>
+              <p className="textOne">Veja você mesmo</p>
+            </FadeInSection>
+
+            <FadeInSection>
+              <div className="flex flex-row gap-10">
+                <Image
+                  src={insta}
+                  alt="Instagram logo"
+                  width={58}
+                  height={58}
+                />
+                <Image src={tiktok} alt="Tiktok logo" width={58} height={58} />
+              </div>
+            </FadeInSection>
+          </div>
+        </div>
+
+        <div className="flex flex-col max-w-[40.4rem] w-full gap-8">
+          <h2 className="titleTwo text-center">Como funciona</h2>
+
+          <div className="boxHowWork">
+            <FadeInSection>1. Faça o pagamento</FadeInSection>
+          </div>
+          <div className="boxHowWork">
+            <FadeInSection>2. Receba seu site no e-mail</FadeInSection>
+          </div>
+          <div className="boxHowWork">
+            <FadeInSection>3. Adicione fotos</FadeInSection>
+          </div>
+          <div className="boxHowWork">
+            <FadeInSection>4. Presenteie quem você ama</FadeInSection>
+          </div>
+
+          <SaleButton />
         </div>
       </main>
     </div>
