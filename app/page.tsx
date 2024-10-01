@@ -78,7 +78,7 @@ export default function Home() {
         </div>
 
         <div className="flex flex-col max-w-[40.4rem] w-full gap-8">
-          <h2 className="titleTwo text-center">Como funciona</h2>
+          <h2 className="titleTwo text-center mb-8">Como funciona</h2>
 
           <div className="boxHowWork">
             <FadeInSection>1. Faça o pagamento</FadeInSection>
@@ -93,6 +93,50 @@ export default function Home() {
             <FadeInSection>4. Presenteie quem você ama</FadeInSection>
           </div>
 
+          <SaleButton />
+        </div>
+
+        <div className="flex flex-col max-w-[40.4rem] w-full gap-8 mt-11 mb-11">
+          <h2 className="titleTwo text-center mb-8">Perguntas frequentes</h2>
+
+          <div className="boxFAQ">
+            <h2 className="subtitle">
+              Como posso criar uma página personalizada?
+            </h2>
+
+            <p className="textTwo">
+              Para criar uma página personalizada, você deve efetuar o pagamento
+              e aguardar no seu e-mail o link com a página para você preencher
+              com suas fotos.
+            </p>
+          </div>
+
+          <div className="boxFAQ">
+            <h2 className="subtitle">
+              Posso editar meu álbum depois de criado?
+            </h2>
+
+            <p className="textTwo">
+              Sim, dentro do seu álbum você vai poder editar, apagar e adicionar
+              as fotos que você queira.
+            </p>
+          </div>
+
+          <div className="boxFAQ">
+            <h2 className="subtitle">Quais as formas de pagamento?</h2>
+
+            <p className="textTwo">Cartão de crédito, pix e boleto.</p>
+          </div>
+
+          <div className="boxFAQ">
+            <h2 className="subtitle">
+              Por quanto tempo a página fica disponível?
+            </h2>
+
+            <p className="textTwo">
+              Uma vez que pago, a página fica disponível para sempre.
+            </p>
+          </div>
           <SaleButton />
         </div>
       </main>
