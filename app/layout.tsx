@@ -1,13 +1,6 @@
-import { Inder } from "next/font/google";
 import "./globals.css";
 import { Metadata } from "next";
 
-// Importando a fonte Inder (apenas peso regular)
-const inder = Inder({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-inder",
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inder.variable} antialiased`}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }

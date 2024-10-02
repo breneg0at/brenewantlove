@@ -8,8 +8,8 @@ const config: Config = {
   ],
   theme: {
     extend: {
-       fontFamily: {
-        sans: ['Inder', 'sans-serif'],
+      fontFamily: {
+        sans: ["Quicksand", "sans-serif"],
       },
     },
   },
