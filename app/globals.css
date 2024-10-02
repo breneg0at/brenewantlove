@@ -144,3 +144,19 @@ body {
   font-size: 1.8rem;
   font-weight: 600;
 }
+
+@keyframes wave {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1000px 0; 
+  }
+}
+
+.animate-waves {
+  animation: wave 500s linear infinite;
+  opacity: 50%;
+  position: fixed;
+}
+

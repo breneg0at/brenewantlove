@@ -2,23 +2,18 @@ import Image from "next/image";
 import ToggleButton from "./components/togglebutton";
 import image1 from "../assets/fotoDoProjeto1.png";
 import image2 from "../assets/fotoDoProjeto2.png";
-import logo from "../assets/PolaLov3.png";
 import insta from "../assets/instagramLogo.png";
 import tiktok from "../assets/tiktokLogo.png";
 import FadeInSection from "./components/fadeInSection";
 import SaleButton from "./components/saleButton";
+import Polalov3 from "./components/polalov3";
 
 export default function Home() {
   return (
-    <div className="bg-[var(--bg-color)] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
+    <div className="bg-[var(--bg-color)] items-center justify-items-center p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <div className="flex flex-col gap-8">
-          <div className="flex flex-rol items-center mx-auto gap-1">
-            <div>
-              <Image src={logo} alt="Logo" width={38} height={38} />
-            </div>
-            <p className="text-2xl font-extrabold">PolaLov3</p>
-          </div>
+          <Polalov3 />
           <h1 className="title text-[var(--primary-color)]">
             Guarde memórias com quem você ama!
           </h1>
