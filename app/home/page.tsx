@@ -8,7 +8,7 @@ const Page = () => {
       <div className="relative z-10 mx-auto flex flex-col gap-8 items-center p-2">
         <Polalov3 />
 
-        <h1 className="title">Nossa linha do tempo</h1>
+        <h1 className="subtitleVar">Nossa linha do tempo</h1>
 
         <Album />
       </div>
