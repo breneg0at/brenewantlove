@@ -11,18 +11,16 @@ const Album = () => {
           key={index}
           className="grid grid-cols-6 items-center w-full opacity-0 animate-fadeIn transition-all duration-700 ease-in-out"
         >
-          {index % 2 === 0 && (
+
             <div
               className={`flex flex-col justify-center items-center col-start-1 col-span-2 p-4`}
             >
               <p className="textOneVar text-[var(--primary-color)] text-center transition-transform duration-500 hover:scale-105">
                 {item.date}
               </p>
-              <h2 className="textOneVar text-[var(--primary-color)] text-center transition-transform duration-500 hover:scale-105">
-                {item.title}
-              </h2>
+
             </div>
-          )}
+          
 
           <div className="col-start-3 col-span-2 flex items-center justify-center relative">
             <div className="flex items-center justify-center bg-white border-white shadow-lg rounded-lg w-[16rem] h-[11rem] p-2 relative overflow-hidden transition-transform duration-500 hover:scale-105 hover:shadow-2xl">
@@ -37,18 +35,15 @@ const Album = () => {
             </div>
           </div>
 
-          {index % 2 !== 0 && (
+          
             <div
               className={`flex flex-col justify-center items-center col-start-5 col-span-2 p-4`}
             >
-              <p className="textOneVar text-[var(--primary-color)] text-center transition-transform duration-500 hover:scale-105">
-                {item.date}
-              </p>
               <h2 className="textOneVar text-[var(--primary-color)] text-center transition-transform duration-500 hover:scale-105">
                 {item.title}
               </h2>
             </div>
-          )}
+
 
           {index < mockData.length - 1 && (
             <div className="flex items-center justify-center col-span-6">
