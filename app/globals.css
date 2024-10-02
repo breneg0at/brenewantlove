@@ -36,8 +36,20 @@ body {
   line-height: 2.6rem;
 }
 
+.subtitleVar {
+  font-weight: 600;
+  font-size: var(--subtitle);
+  line-height: 2.6rem;
+}
+
 .textOne {
   font-weight: 200;
+  font-size: var(--text-one);
+  line-height: 2.1rem;
+}
+
+.textOneVar {
+  font-weight: 600;
   font-size: var(--text-one);
   line-height: 2.1rem;
 }
@@ -160,3 +172,17 @@ body {
   position: fixed;
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-in-out forwards;
+}
