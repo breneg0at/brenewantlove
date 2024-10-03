@@ -15,7 +15,7 @@ const Album = () => {
             <div
               className={`flex flex-col justify-center items-center col-start-1 col-span-2 p-4`}
             >
-              <p className="textOneVar text-[var(--primary-color)] text-center transition-transform duration-500 hover:scale-105">
+              <p className="textOneVar text-white text-center transition-transform duration-500 hover:scale-105">
                 {item.date}
               </p>
               <h2 className="textOneVar text-[var(--primary-color)] text-center transition-transform duration-500 hover:scale-105">
@@ -41,7 +41,7 @@ const Album = () => {
             <div
               className={`flex flex-col justify-center items-center col-start-5 col-span-2 p-4`}
             >
-              <p className="textOneVar text-[var(--primary-color)] text-center transition-transform duration-500 hover:scale-105">
+              <p className="textOneVar text-white text-center transition-transform duration-500 hover:scale-105">
                 {item.date}
               </p>
               <h2 className="textOneVar text-[var(--primary-color)] text-center transition-transform duration-500 hover:scale-105">

@@ -38,7 +38,7 @@ body {
 
 .subtitleVar {
   font-weight: 600;
-  font-size: var(--subtitle);
+  font-size: var(--title-two);
   line-height: 2.6rem;
 }
 
