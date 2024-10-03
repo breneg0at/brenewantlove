@@ -5,6 +5,7 @@ import Image from "next/image";
 import divider from "@/assets/Linea.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import HomeButtons from "./HomeButtons";
 
 const Album = () => {
   useEffect(() => {
@@ -16,7 +17,7 @@ const Album = () => {
   }, []);
 
   return (
-    <div className="flex flex-col w-full h-fit">
+    <div className="flex flex-col w-full h-fit relative">
       {mockData.map((item, index) => (
         <div
           key={index}
@@ -68,9 +69,7 @@ const Album = () => {
           )}
 
           {index < mockData.length - 1 && (
-            <div
-              className="flex items-center justify-center col-span-6"
-            >
+            <div className="flex items-center justify-center col-span-6">
               <Image
                 src={divider}
                 alt="Divider"
@@ -82,6 +81,8 @@ const Album = () => {
           )}
         </div>
       ))}
+
+      <HomeButtons />
     </div>
   );
 };
