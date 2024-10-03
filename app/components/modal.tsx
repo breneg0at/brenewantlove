@@ -1,5 +1,4 @@
-// app/components/Modal.tsx
-import React from "react";
+import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ModalProps {
@@ -15,6 +14,18 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
     visible: { opacity: 1, y: "0%" },
     exit: { opacity: 0, y: "100%" },
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
 
   return (
     <AnimatePresence>
