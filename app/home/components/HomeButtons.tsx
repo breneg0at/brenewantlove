@@ -8,7 +8,7 @@ import AlbumForm from "./AlbumForm";
 
 const HomeButtons: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
-  const [showFormModal, setShowFormModal] = useState(false); // Novo estado para o modal do formulário
+  const [showFormModal, setShowFormModal] = useState(false);
   const [screenshot, setScreenshot] = useState<string | null>(null);
 
   const handleLeftButtonClick = async () => {
@@ -68,7 +68,7 @@ const HomeButtons: React.FC = () => {
       </button>
       <button
         className="focus:outline-none rounded-full p-5"
-        onClick={() => setShowFormModal(true)} // Abrir o modal do formulário
+        onClick={() => setShowFormModal(true)}
       >
         <Image
           src={rightButtonImage}

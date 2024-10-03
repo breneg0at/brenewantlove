@@ -1,4 +1,3 @@
-// app/components/FloatingLabelInput.tsx
 import React, { useEffect, useRef, useState } from "react";
 
 interface FloatingLabelInputProps {

@@ -10,10 +10,8 @@ const AlbumForm: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Aqui você pode lidar com o envio dos dados do formulário
     console.log({ albumName, albumDate, albumMessage, albumCover });
 
-    // Feche o modal após o envio
     onClose();
   };
 
