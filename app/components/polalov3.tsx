@@ -13,7 +13,9 @@ const Polalov3 = () => {
       <p className="text-2xl font-extrabold">
         <span className="text-[var(--primary-color)]">Pola</span>
         <span className="text-pink-400">Lov</span>
-        <span className="text-pink-400 inline-block transform -rotate-45">3</span>
+        <span className="text-pink-400 inline-block transform -rotate-45">
+          3
+        </span>
       </p>
     </div>
   );
