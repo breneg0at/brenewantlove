@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Quicksand", "sans-serif"],
+        sans: ["Signika", "sans-serif"],
       },
     },
   },

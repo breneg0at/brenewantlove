@@ -1,19 +1,34 @@
-import React from "react";
-import mockData from "../mock/mockData"; 
+'use client'
+import React, { useEffect } from "react";
+import mockData from "../mock/mockData";
 import Image from "next/image";
 import divider from "@/assets/Linea.png";
+import AOS from "aos"; 
+import "aos/dist/aos.css"; 
 
 const Album = () => {
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, 
+      easing: "ease-in", 
+      once: false, 
+    });
+  }, []);
+
   return (
     <div className="flex flex-col w-full h-fit">
       {mockData.map((item, index) => (
         <div
           key={index}
           className="grid grid-cols-6 items-center w-full opacity-0 animate-fadeIn transition-all duration-700 ease-in-out"
+          data-aos="fade-up" 
         >
           {index % 2 === 0 && (
             <div
-              className={`flex flex-col justify-center items-center col-start-1 col-span-2 p-4`}
+              className="flex flex-col justify-center items-center col-start-1 col-span-2 p-4"
+                        data-aos="fade-up" 
+
             >
               <p className="textOneVar text-white text-center transition-transform duration-500 hover:scale-105">
                 {item.date}
@@ -24,7 +39,10 @@ const Album = () => {
             </div>
           )}
 
-          <div className="col-start-3 col-span-2 flex items-center justify-center relative">
+          <div
+            className="col-start-3 col-span-2 flex items-center justify-center relative"
+            data-aos="zoom-in" 
+          >
             <div className="flex items-center justify-center bg-white border-white shadow-lg rounded-lg w-[16rem] h-[11rem] p-2 relative overflow-hidden transition-transform duration-500 hover:scale-105 hover:shadow-2xl">
               <Image
                 src={item.imageUrl}
@@ -39,7 +57,9 @@ const Album = () => {
 
           {index % 2 !== 0 && (
             <div
-              className={`flex flex-col justify-center items-center col-start-5 col-span-2 p-4`}
+              className="flex flex-col justify-center items-center col-start-5 col-span-2 p-4"
+                        data-aos="fade-up" 
+
             >
               <p className="textOneVar text-white text-center transition-transform duration-500 hover:scale-105">
                 {item.date}
@@ -51,7 +71,11 @@ const Album = () => {
           )}
 
           {index < mockData.length - 1 && (
-            <div className="flex items-center justify-center col-span-6">
+            <div
+              className="flex items-center justify-center col-span-6"
+                        data-aos="fade-up" 
+
+            >
               <Image
                 src={divider}
                 alt="Divider"
