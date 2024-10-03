@@ -29,19 +29,15 @@ const element = document.querySelector(".album-content") as HTMLElement;
 
   const handleShare = async (): Promise<void> => {
     if (screenshot) {
-      // Converte a imagem base64 em um Blob
       const blob = await fetch(screenshot).then((res) => res.blob());
       const file = new File([blob], "screenshot.png", { type: "image/png" });
 
-      // Verifica se a API de compartilhamento é suportada
       if (navigator.share) {
         try {
           await navigator.share({
             title: 'Compartilhe esta imagem',
             text: 'Aqui está uma imagem que eu quero compartilhar!',
-            files: [file], // Compartilha a imagem
-            // Adicione uma URL se quiser compartilhar um link também
-            // url: 'https://example.com', // Se desejar
+            files: [file], 
           });
           console.log('Imagem compartilhada com sucesso!');
         } catch (error) {

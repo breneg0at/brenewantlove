@@ -4,7 +4,7 @@ import Header from "../components/header";
 
 const Page = () => {
   return (
-    <main className="relative"> {/* O main já envolve o conteúdo */}
+    <main className="relative">
       <div className="relative z-10 mb-48 mx-auto flex flex-col gap-10 items-center p-2">
         <Header dynamicText="Linha do tempo" />
         <Album />
