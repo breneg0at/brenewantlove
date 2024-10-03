@@ -14,6 +14,7 @@ export default function BasicDatePicker() {
           "& .MuiInputBase-root": {
             backgroundColor: "transparent",
             color: "white", // Text color
+            height: "5.3rem"
           },
           "& .MuiOutlinedInput-notchedOutline": {
             borderColor: "white", // Border color
@@ -22,7 +23,7 @@ export default function BasicDatePicker() {
             color: "gray", // Placeholder color
           },
           "& .MuiInputLabel-root.Mui-focused": {
-            color: "blue", // Placeholder color when focused
+            color: "white", // Placeholder color when focused
           },
           "& .MuiInputBase-input::placeholder": {
             color: "white", // Color of the placeholder text itself

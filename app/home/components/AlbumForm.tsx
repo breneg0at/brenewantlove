@@ -30,7 +30,7 @@ const AlbumForm: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
       <div className="flex flex-col gap-2">
         
-          <BasicDatePicker />
+      <BasicDatePicker />
       </div>
 
       <div className="flex flex-col gap-2">
@@ -50,7 +50,7 @@ const AlbumForm: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
       <input
         type="file"
-        className="file-input file-input-bordered file-input-primary w-full max-w-[32.1rem] h-[5.3rem]"
+        className="file-input file-input-bordered file-input-primary w-full max-w-[40.4rem] h-[5.3rem]"
       />
 
       <button
