@@ -28,5 +28,8 @@
     ".next/types/**/*.ts",
     "app/home/mock/mockData.js"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules", // Isso já deve estar fazendo o trabalho
+    "dist" // Excluir o diretório de saída
+  ]
 }

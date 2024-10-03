@@ -4,12 +4,12 @@ import rightButtonImage from "@/assets/addbutton.png";
 import Image from "next/image";
 import html2canvas from "html2canvas";
 
-const HomeButtons = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [screenshot, setScreenshot] = useState(null);
+const HomeButtons: React.FC = () => {
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [screenshot, setScreenshot] = useState<string | null>(null);
 
-  const handleLeftButtonClick = async () => {
-    const element = document.querySelector(".album-content");
+  const handleLeftButtonClick = async (): Promise<void> => {
+const element = document.querySelector(".album-content") as HTMLElement;
     if (element) {
       const canvas = await html2canvas(element);
       const imgData = canvas.toDataURL("image/png");
@@ -18,7 +18,7 @@ const HomeButtons = () => {
     }
   };
 
-  const handleDownload = () => {
+  const handleDownload = (): void => {
     if (screenshot) {
       const link = document.createElement("a");
       link.href = screenshot;
@@ -27,7 +27,7 @@ const HomeButtons = () => {
     }
   };
 
-  const handleShare = async () => {
+  const handleShare = async (): Promise<void> => {
     if (screenshot) {
       // Converte a imagem base64 em um Blob
       const blob = await fetch(screenshot).then((res) => res.blob());
@@ -55,20 +55,18 @@ const HomeButtons = () => {
 
   return (
     <div className="flex flex-row w-full fixed bottom-8 container justify-between pr-8 pl-8">
-      <>
-        <button
-          className="focus:outline-none rounded-full p-2"
-          onClick={handleLeftButtonClick}
-        >
-          <Image
-            src={leftButtonImage}
-            alt="Left Button"
-            width={36}
-            height={36}
-            className="transition-transform duration-300 hover:scale-105"
-          />
-        </button>
-      </>
+      <button
+        className="focus:outline-none rounded-full p-2"
+        onClick={handleLeftButtonClick}
+      >
+        <Image
+          src={leftButtonImage}
+          alt="Left Button"
+          width={36}
+          height={36}
+          className="transition-transform duration-300 hover:scale-105"
+        />
+      </button>
       <button className="focus:outline-none rounded-full p-5">
         <Image
           src={rightButtonImage}
