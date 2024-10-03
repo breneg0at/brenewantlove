@@ -43,7 +43,7 @@ const Album = () => {
             className="col-start-3 col-span-2 flex items-center justify-center relative"
             data-aos="zoom-in" 
           >
-            <div className="flex items-center justify-center bg-white border-white shadow-lg rounded-lg w-[16rem] h-[11rem] p-2 relative overflow-hidden transition-transform duration-500 hover:scale-105 hover:shadow-2xl">
+            <div className="font-sans flex items-center justify-center bg-white border-white shadow-lg rounded-lg w-[16rem] h-[11rem] p-2 relative overflow-hidden transition-transform duration-500 hover:scale-105 hover:shadow-2xl">
               <Image
                 src={item.imageUrl}
                 alt={item.title}

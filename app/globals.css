@@ -2,6 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Isidora Sans';
+  src: url('/fonts/IsidoraSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Isidora Sans';
+  src: url('/fonts/IsidoraSans-Regular.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Isidora Sans';
+  src: url('/fonts/IsidoraSans-Regular.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Isidora Sans';
+  src: url('/fonts/IsidoraSans-Regular.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Isidora Sans';
+  src: url('/fonts/IsidoraSans-Regular.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Isidora Sans';
+  src: url('/fonts/IsidoraSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
 html {
   font-size: 62.5%;
 }
@@ -15,11 +57,10 @@ html {
   --subtitle: 2.2rem;
   --text-one: 1.8rem;
   --text-two: 1.4rem;
-  --font-primary: var(--font-inder);
 }
 
 body {
-  font-family: var(--font-primary), sans-serif;
+  font-family: 'Isidora Sans', sans-serif;
   color: #fff;
   background-color: var(--bg-color);
 }
@@ -49,7 +90,7 @@ body {
 }
 
 .textOneVar {
-  font-weight: 600;
+  font-weight: 300;
   font-size: var(--text-one);
   line-height: 2.1rem;
 }
