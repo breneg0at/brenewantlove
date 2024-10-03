@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const HomeButtons = () => {
   return (
-    <div className="flex flex-row w-full fixed bottom-8 container justify-between p-8">
+    <div className="flex flex-row w-full fixed bottom-8 container justify-between pr-8 pl-8">
       <>
         <button className="focus:outline-none bg-[var(--bg-color)] rounded-full p-7">
           <Image
