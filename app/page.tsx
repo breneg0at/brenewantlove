@@ -6,14 +6,14 @@ import insta from "../assets/instagramLogo.png";
 import tiktok from "../assets/tiktokLogo.png";
 import FadeInSection from "./components/fadeInSection";
 import SaleButton from "./components/saleButton";
-import Polalov3 from "./components/polalov3";
+import Header from "./components/header";
 
 export default function Home() {
   return (
     <div className="bg-[var(--bg-color)] items-center justify-items-center p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <div className="flex flex-col gap-8">
-          <Polalov3 />
+          <Header />
           <h1 className="title text-[var(--primary-color)]">
             Guarde memórias com quem você ama!
           </h1>
