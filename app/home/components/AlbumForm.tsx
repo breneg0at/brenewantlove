@@ -1,56 +1,62 @@
 // app/components/AlbumForm.tsx
 import React, { useState } from "react";
-import FloatingLabelInput from "./FloatingLabelInput";
+import BasicDatePicker from "./BasicDatePicker";
 
 const AlbumForm: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [albumName, setAlbumName] = useState("");
-  const [albumDate, setAlbumDate] = useState("");
   const [albumMessage, setAlbumMessage] = useState("");
-  const [albumCover, setAlbumCover] = useState<File | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ albumName, albumDate, albumMessage, albumCover });
-
     onClose();
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
-      <FloatingLabelInput
-        label="Nome do Álbum"
-        value={albumName}
-        placeholder="Digite o nome do álbum..."
-        onChange={setAlbumName}
-        required
-      />
-      <FloatingLabelInput
-        type="date"
-        label="Data do Álbum"
-        value={albumDate}
-        placeholder="Escolha a data do álbum..."
-        onChange={setAlbumDate}
-        required
-      />
-      <FloatingLabelInput
-        label="Mensagem do Álbum"
-        placeholder="Digite uma mensagem para aparecer no seu álbum..."
-        value={albumMessage}
-        onChange={setAlbumMessage}
-        required
-      />
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      <div className="flex flex-col gap-2">
+        <label htmlFor="albumName" className="text-lg">
+          Nome do álbum
+        </label>
+        <input
+          type="text"
+          name="albumName"
+          value={albumName}
+          placeholder="Ex: Casamento, Férias, Passeio em Familia"
+          className="input w-full inputModel"
+          onChange={(e) => setAlbumName(e.target.value)}
+          required
+        />
+      </div>
+
+      <div className="flex flex-col gap-2">
+        
+          <BasicDatePicker />
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <label htmlFor="descAlbum" className="text-lg">
+          Descrição do álbum
+        </label>
+        <input
+          type="text"
+          name="descAlbum"
+          value={albumMessage}
+          placeholder="Descrição do álbum"
+          className="input w-full inputModel"
+          onChange={(e) => setAlbumMessage(e.target.value)}
+          required
+        />
+      </div>
+
       <input
         type="file"
-        accept="image/*"
-        onChange={(e) => {
-          if (e.target.files) {
-            setAlbumCover(e.target.files[0]);
-          }
-        }}
-        required
-        className="inputModel pt-3 pl-3"
+        className="file-input file-input-bordered file-input-primary w-full max-w-[32.1rem] h-[5.3rem]"
       />
-      <button type="submit" className="bg-transparent border border-[var(--primary-color)] textTwo text-white p-6 rounded">
+
+      <button
+        type="submit"
+        className="bg-transparent border border-[var(--primary-color)] textTwo text-white p-6 rounded"
+      >
         Criar Álbum
       </button>
     </form>

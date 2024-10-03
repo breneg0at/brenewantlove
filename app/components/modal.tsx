@@ -33,7 +33,9 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
             exit="exit"
             transition={{ duration: 0.3 }}
           >
-            {title && <h2 className="subtitle font-bold mb-4 text-center">{title}</h2>}
+            {title && (
+              <h2 className="subtitle font-bold mb-4 text-center">{title}</h2>
+            )}
             <div>{children}</div>
             <div className="flex justify-end mt-4">
               <button
