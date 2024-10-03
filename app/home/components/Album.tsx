@@ -73,7 +73,7 @@ const Album = () => {
           {index < mockData.length - 1 && (
             <div
               className="flex items-center justify-center col-span-6"
-                        data-aos="fade-up" 
+                        data-aos="fade-in" 
 
             >
               <Image
