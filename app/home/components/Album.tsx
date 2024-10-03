@@ -17,7 +17,7 @@ const Album = () => {
   }, []);
 
   return (
-    <div className="flex flex-col w-full h-fit relative">
+    <div className="flex flex-col w-full h-fit relative"> {/* Adicione a classe album-content */}
       {mockData.map((item, index) => (
         <div
           key={index}
@@ -39,7 +39,7 @@ const Album = () => {
           )}
 
           <div
-            className="col-start-3 col-span-2 flex items-center justify-center relative"
+            className="col-start-3 col-span-2 flex items-center justify-center relative album-content"
             data-aos="zoom-in"
           >
             <div className="font-sans flex items-center justify-center bg-white border-white shadow-lg rounded-lg w-[16rem] h-[11rem] p-2 relative overflow-hidden transition-transform duration-500 hover:scale-105 hover:shadow-2xl">

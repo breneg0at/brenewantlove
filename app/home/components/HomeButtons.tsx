@@ -1,13 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 import leftButtonImage from "@/assets/sharebutton.png";
 import rightButtonImage from "@/assets/addbutton.png";
 import Image from "next/image";
+import html2canvas from "html2canvas";
 
 const HomeButtons = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [screenshot, setScreenshot] = useState(null);
+
+  const handleLeftButtonClick = async () => {
+    const element = document.querySelector(".album-content");
+    if (element) {
+      const canvas = await html2canvas(element);
+      const imgData = canvas.toDataURL("image/png");
+      setScreenshot(imgData);
+      setShowModal(true);
+    }
+  };
+
+  const handleDownload = () => {
+    if (screenshot) {
+      const link = document.createElement("a");
+      link.href = screenshot;
+      link.download = "screenshot.png";
+      link.click();
+    }
+  };
+
+  const handleShare = async () => {
+    if (screenshot) {
+      // Converte a imagem base64 em um Blob
+      const blob = await fetch(screenshot).then((res) => res.blob());
+      const file = new File([blob], "screenshot.png", { type: "image/png" });
+
+      // Verifica se a API de compartilhamento é suportada
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: 'Compartilhe esta imagem',
+            text: 'Aqui está uma imagem que eu quero compartilhar!',
+            files: [file], // Compartilha a imagem
+            // Adicione uma URL se quiser compartilhar um link também
+            // url: 'https://example.com', // Se desejar
+          });
+          console.log('Imagem compartilhada com sucesso!');
+        } catch (error) {
+          console.error('Erro ao compartilhar a imagem:', error);
+        }
+      } else {
+        alert('API de compartilhamento não suportada neste navegador.');
+      }
+    }
+  };
+
   return (
     <div className="flex flex-row w-full fixed bottom-8 container justify-between pr-8 pl-8">
       <>
-        <button className="focus:outline-none rounded-full p-5">
+        <button
+          className="focus:outline-none rounded-full p-2"
+          onClick={handleLeftButtonClick}
+        >
           <Image
             src={leftButtonImage}
             alt="Left Button"
@@ -26,6 +78,43 @@ const HomeButtons = () => {
           className="transition-transform duration-300 hover:scale-105"
         />
       </button>
+
+      {showModal && (
+        <div className="fixed mx-auto inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-[var(--bg-color)] w-[100vh] h-fit p-6 rounded-lg shadow-lg flex flex-col items-center">
+            <h2 className="text-lg mb-4">Compartilhe nas suas redes sociais</h2>
+            {screenshot && (
+              <Image
+                src={screenshot}
+                alt="Screenshot"
+                className="mb-4 w-64 h-auto border"
+                width={329}
+                height={329}
+              />
+            )}
+            <div className="flex space-x-4">
+              <button
+                className="bg-blue-500 text-white px-4 py-2 rounded"
+                onClick={handleDownload}
+              >
+                Download
+              </button>
+              <button
+                className="bg-green-500 text-white px-4 py-2 rounded"
+                onClick={handleShare}
+              >
+                Compartilhar
+              </button>
+              <button
+                className="bg-red-500 text-white px-4 py-2 rounded"
+                onClick={() => setShowModal(false)}
+              >
+                Fechar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
