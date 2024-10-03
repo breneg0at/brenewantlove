@@ -17,7 +17,7 @@ const Album = () => {
   }, []);
 
   return (
-    <div className="flex flex-col w-full h-fit relative">
+    <div className="flex flex-col w-full h-fit relative mb-32">
       {mockData.map((item, index) => (
         <div
           key={index}
