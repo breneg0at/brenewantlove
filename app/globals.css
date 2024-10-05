@@ -208,6 +208,7 @@ body {
   width: 100%;
   max-width: 40.6rem;
   height: 5.3rem;
+  padding-left: 0.9rem;
   border-radius: 0.4rem;
   font-size: 1.2rem;
   display: flex;
