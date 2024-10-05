@@ -5,7 +5,7 @@ import Image from "next/image";
 import divider from "@/assets/Linea.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import HomeButtons from "./HomeButtons";
+import AddButton from "./AddButton";
 
 const Album = () => {
   useEffect(() => {
@@ -82,7 +82,7 @@ const Album = () => {
         </div>
       ))}
 
-      <HomeButtons />
+      <AddButton />
     </div>
   );
 };

@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import leftButtonImage from "@/assets/sharebutton.png";
-import rightButtonImage from "@/assets/addbutton.png";
+import shareButton from "@/assets/sharebutton.png";
 import Image from "next/image";
 import html2canvas from "html2canvas-pro";
 import Modal from "@/app/components/modal";
-import AlbumForm from "./AlbumForm";
 
-const HomeButtons: React.FC = () => {
+const ShareButton: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
-  const [showFormModal, setShowFormModal] = useState(false);
   const [screenshot, setScreenshot] = useState<string | null>(null);
 
   const handleLeftButtonClick = async () => {
@@ -42,7 +39,6 @@ const HomeButtons: React.FC = () => {
             text: "Aqui está uma imagem que eu quero compartilhar!",
             files: [file],
           });
-          console.log("Imagem compartilhada com sucesso!");
         } catch (error) {
           console.error("Erro ao compartilhar a imagem:", error);
         }
@@ -53,26 +49,14 @@ const HomeButtons: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-row w-full fixed bottom-8 container justify-between pr-8 pl-8">
+    <>
       <button
         className="focus:outline-none rounded-full p-2"
         onClick={handleLeftButtonClick}
       >
         <Image
-          src={leftButtonImage}
-          alt="Left Button"
-          width={36}
-          height={36}
-          className="transition-transform duration-300 hover:scale-105"
-        />
-      </button>
-      <button
-        className="focus:outline-none rounded-full p-5"
-        onClick={() => setShowFormModal(true)}
-      >
-        <Image
-          src={rightButtonImage}
-          alt="Right Button"
+          src={shareButton}
+          alt="Share Button"
           width={36}
           height={36}
           className="transition-transform duration-300 hover:scale-105"
@@ -110,16 +94,8 @@ const HomeButtons: React.FC = () => {
           </div>
         )}
       </Modal>
-
-      <Modal
-        isOpen={showFormModal}
-        onClose={() => setShowFormModal(false)}
-        title="Criar Novo Álbum"
-      >
-        <AlbumForm onClose={() => setShowFormModal(false)} />
-      </Modal>
-    </div>
+    </>
   );
 };
 
-export default HomeButtons;
+export default ShareButton;
