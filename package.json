@@ -17,7 +17,6 @@
     "@mui/material": "^6.1.2",
     "@mui/x-date-pickers": "^7.18.0",
     "aos": "^2.3.4",
-    "daisyui": "^4.12.11",
     "dayjs": "^1.11.13",
     "framer-motion": "^11.9.0",
     "html2canvas": "^1.4.1",
