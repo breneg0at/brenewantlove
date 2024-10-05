@@ -14,7 +14,7 @@ export default function BasicDatePicker() {
           "& .MuiInputBase-root": {
             backgroundColor: "transparent",
             color: "white", // Text color
-            height: "5.3rem"
+            height: "5.3rem",
           },
           "& .MuiOutlinedInput-notchedOutline": {
             borderColor: "white", // Border color

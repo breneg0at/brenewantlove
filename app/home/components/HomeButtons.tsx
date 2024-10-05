@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import leftButtonImage from "@/assets/sharebutton.png";
 import rightButtonImage from "@/assets/addbutton.png";
 import Image from "next/image";
-import html2canvas from 'html2canvas-pro';
+import html2canvas from "html2canvas-pro";
 import Modal from "@/app/components/modal";
 import AlbumForm from "./AlbumForm";
 

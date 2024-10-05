@@ -29,8 +29,7 @@ const AlbumForm: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       </div>
 
       <div className="flex flex-col gap-2">
-        
-      <BasicDatePicker />
+        <BasicDatePicker />
       </div>
 
       <div className="flex flex-col gap-2">
