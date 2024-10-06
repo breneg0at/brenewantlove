@@ -13,7 +13,6 @@ const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
   const album = mockData.find((item) => item.id === albumId);
   const [showModal, setShowModal] = useState(false);
   const [screenshot, setScreenshot] = useState<string | null>(null);
-  const [activePolaroidIndex, setActivePolaroidIndex] = useState<number | null>(null);
 
   if (!album) {
     return <p>Álbum não encontrado!</p>;
@@ -25,7 +24,6 @@ const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
       const canvas = await html2canvas(polaroidElement, { scale: 2 });
       const imgData = canvas.toDataURL("image/png");
       setScreenshot(imgData);
-      setActivePolaroidIndex(index);
       setShowModal(true);
     }
   };
