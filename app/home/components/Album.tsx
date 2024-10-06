@@ -5,9 +5,12 @@ import Image from "next/image";
 import divider from "@/assets/Linea.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useRouter } from "next/navigation"; 
 import AddButton from "./AddButton";
 
 const Album = () => {
+  const router = useRouter(); 
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -15,6 +18,11 @@ const Album = () => {
       once: false,
     });
   }, []);
+
+  const handleAlbumClick = (albumId: string) => {
+    
+    router.push(`/albums/${albumId}`);
+  };
 
   return (
     <div className="flex flex-col w-full h-fit relative mb-32">
@@ -39,8 +47,9 @@ const Album = () => {
           )}
 
           <div
-            className="col-start-3 col-span-2 flex items-center justify-center relative album-content"
+            className="col-start-3 col-span-2 flex items-center justify-center relative album-content cursor-pointer"
             data-aos="zoom-in"
+            onClick={() => handleAlbumClick(item.id)}
           >
             <div className="font-sans flex items-center justify-center bg-white border-white shadow-lg rounded-lg w-[16rem] h-[11rem] p-2 relative overflow-hidden transition-transform duration-500 hover:scale-105 hover:shadow-2xl">
               <Image

@@ -216,3 +216,19 @@ body {
   gap: 1rem;
   font-weight: 400;
 }
+
+.polaroidContainer {
+  background-color: white;
+  margin-bottom: 2rem;
+  /* padding: 0.8rem; */
+  height: 18rem;
+}
+
+.polaroidContainer image {
+  background-color: white;
+  margin-bottom: 2rem;
+  width: 80%;
+  height: 18rem;
+  padding: 0.2rem;
+  max-height: 12rem;
+}
