@@ -61,7 +61,7 @@ const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
   return (
     <div className="flex flex-col items-center">
       <Header dynamicText={"Casamento"} />
-      <div className="grid grid-cols-2 gap-4 p-3">
+      <div className="grid grid-cols-2 gap-4 p-3 w-full">
         {mockData.map((image, index) => (
           <div key={index} className="relative">
             <div id={`polaroid-${index}`} className="polaroidContainer bg-white p-3 shadow-md rounded-lg">
@@ -70,7 +70,7 @@ const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
                 alt={image.title}
                 width={130}
                 height={130}
-                className="object-cover h-[130px] mb-2"
+                className="object-cover  w-full h-[130px] mb-2"
               />
             </div>
             <button
