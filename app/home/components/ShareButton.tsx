@@ -57,8 +57,8 @@ const ShareButton: React.FC = () => {
         <Image
           src={shareButton}
           alt="Share Button"
-          width={36}
-          height={36}
+          width={28}
+          height={28}
           className="transition-transform duration-300 hover:scale-105"
         />
       </button>

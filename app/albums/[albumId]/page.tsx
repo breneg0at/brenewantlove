@@ -1,4 +1,6 @@
+'use client'
 import Header from "@/app/components/header";
+import ShareButton from "@/app/home/components/ShareButton";
 import mockData from "@/app/home/mock/mockData";
 import Image from "next/image";
 
@@ -19,17 +21,17 @@ const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
         {mockData.map((image, index) => (
           <div
             key={index}
-            className="polaroidContainer bg-white p-4 shadow-md rounded-lg"
+            className="polaroidContainer bg-white p-3 shadow-md rounded-lg"
           >
             <Image
               src={image.imageUrl}
               alt={`Imagem ${index + 1} de ${album.title}`}
               width={180}
-              height={120}
-              className="mb-4 max-h-40"
+              height={180}
+              className="mb-4 h-52"
             />
 
-            <p className="text-black text-center">{image.title}</p>
+            <ShareButton />
           </div>
         ))}
       </div>
