@@ -1,8 +1,8 @@
 // AlbumDetail.tsx
 'use client';
+import React, { useState } from 'react';
 import Header from "@/app/components/header";
 import mockData from "@/app/home/mock/mockData";
-import { useRef, useState } from "react";
 import Image from "next/image";
 import html2canvas from "html2canvas-pro";
 import Modal from "@/app/components/modal";
@@ -10,22 +10,22 @@ import shareButton from "@/assets/sharebutton.png";
 
 const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
   const { albumId } = params;
-
   const album = mockData.find((item) => item.id === albumId);
   const [showModal, setShowModal] = useState(false);
   const [screenshot, setScreenshot] = useState<string | null>(null);
-  const polaroidRefs = useRef<(HTMLDivElement | null)[]>(Array(mockData.length).fill(null));
+  const [activePolaroidIndex, setActivePolaroidIndex] = useState<number | null>(null);
 
   if (!album) {
     return <p>Álbum não encontrado!</p>;
   }
 
   const handleShare = async (index: number) => {
-    const polaroidElement = polaroidRefs.current[index];
+    const polaroidElement = document.getElementById(`polaroid-${index}`);
     if (polaroidElement) {
       const canvas = await html2canvas(polaroidElement, { scale: 2 });
       const imgData = canvas.toDataURL("image/png");
       setScreenshot(imgData);
+      setActivePolaroidIndex(index);
       setShowModal(true);
     }
   };
@@ -66,7 +66,7 @@ const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
       <div className="grid grid-cols-2 gap-4 p-3">
         {mockData.map((image, index) => (
           <div key={index} className="relative">
-            <div ref={(el) => (polaroidRefs.current[index] = el)} className="polaroidContainer bg-white p-3 shadow-md rounded-lg">
+            <div id={`polaroid-${index}`} className="polaroidContainer bg-white p-3 shadow-md rounded-lg">
               <Image
                 src={image.imageUrl}
                 alt={image.title}
