@@ -1,31 +1,56 @@
-// AlbumDetail.tsx
 'use client';
 import React, { useState } from 'react';
 import Header from "@/app/components/header";
 import mockData from "@/app/home/mock/mockData";
 import Image from "next/image";
-import html2canvas from "html2canvas-pro";
 import Modal from "@/app/components/modal";
 import shareButton from "@/assets/sharebutton.png";
+import html2canvas from "html2canvas-pro";
+
 
 const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
   const { albumId } = params;
   const album = mockData.find((item) => item.id === albumId);
   const [showModal, setShowModal] = useState(false);
   const [screenshot, setScreenshot] = useState<string | null>(null);
+  // const [activeTab, setActiveTab] = useState<'comTexto' | 'semTexto'>('comTexto');
+  // const [hasDescription, setHasDescription] = useState<boolean>(false);
+  // const [modalTitle, setModalTitle] = useState<string>('Compartilhar seu Polaroid');
 
   if (!album) {
     return <p>Álbum não encontrado!</p>;
   }
 
-  const handleShare = async (index: number) => {
-    const polaroidElement = document.getElementById(`polaroid-${index}`);
-    if (polaroidElement) {
-      const canvas = await html2canvas(polaroidElement, { scale: 2 });
-      const imgData = canvas.toDataURL("image/png");
-      setScreenshot(imgData);
-      setShowModal(true);
+  const createDivForDownload = async (index: number) => {
+    const clickedImage = mockData[index];
+    
+    const content = document.createElement('div');
+    content.style.width = '400px'; 
+    content.style.height = '600px'; 
+    content.style.background = '#e0d9ca';
+    content.style.padding = '20px';
+    content.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
+    
+    const imageElement = document.createElement('img');
+    imageElement.src = clickedImage.imageUrl;
+    imageElement.style.width = '100%'; 
+    content.appendChild(imageElement);
+
+    if (clickedImage.description) {
+      const textElement = document.createElement('p');
+      textElement.innerText = clickedImage.description;
+      textElement.style.marginTop = '10px';
+      content.appendChild(textElement);
     }
+
+    document.body.appendChild(content);
+
+    const canvas = await html2canvas(content, { scale: 2 });
+    const imgData = canvas.toDataURL("image/png");
+    setScreenshot(imgData);
+    setShowModal(true);
+
+    document.body.removeChild(content);
   };
 
   const handleDownload = () => {
@@ -46,7 +71,6 @@ const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
         try {
           await navigator.share({
             title: "Compartilhe esta imagem",
-            text: "Aqui está uma imagem que eu quero compartilhar!",
             files: [file],
           });
         } catch (error) {
@@ -64,7 +88,7 @@ const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
       <div className="grid grid-cols-2 gap-4 p-3 w-full">
         {mockData.map((image, index) => (
           <div key={index} className="relative">
-            <div id={`polaroid-${index}`} className="polaroidContainer bg-white p-3 shadow-md rounded-lg">
+            <div className="polaroidContainer bg-white p-3 shadow-md">
               <Image
                 src={image.imageUrl}
                 alt={image.title}
@@ -74,8 +98,8 @@ const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
               />
             </div>
             <button
-              className="focus:outline-none rounded-full p-2 absolute bottom-10 left-2"
-              onClick={() => handleShare(index)}
+              className="focus:outline-none p-2 absolute bottom-10 left-2"
+              onClick={() => createDivForDownload(index)}
             >
               <Image
                 src={shareButton}
@@ -88,29 +112,32 @@ const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
           </div>
         ))}
       </div>
+
       <Modal
         isOpen={showModal}
         onClose={() => setShowModal(false)}
-        title="Compartilhe sua Polaroid"
+        title={"Compartilhe"}
       >
         {screenshot && (
-          <div>
-            <Image
-              src={screenshot}
-              alt="Polaroid Screenshot"
-              className="mb-4 border"
-              width={329}
-              height={329}
-            />
+          <div className='flex flex-col gap-5'>
+            <div className="p-3 shadow-md">
+              <Image
+                src={screenshot}
+                alt="Polaroid Screenshot"
+                className="object-cover w-full h-[300px] mb-2"
+                width={300}
+                height={600}
+              />
+            </div>
             <div className="flex flex-row gap-2">
               <button
-                className="bg-green-500 text-white px-4 py-2 rounded"
+                className="bg-green-500 text-white px-4 py-2"
                 onClick={handleShareImage}
               >
                 Compartilhar
               </button>
               <button
-                className="bg-blue-500 text-white px-4 py-2 rounded"
+                className="bg-blue-500 text-white px-4 py-2"
                 onClick={handleDownload}
               >
                 Download

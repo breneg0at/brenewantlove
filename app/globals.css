@@ -4,6 +4,18 @@
 
 html {
   font-size: 62.5%;
+
+}
+
+.bgHtml {
+  background-color: #090518;
+}
+
+@media (min-width: 800px) {
+  body {
+    max-width: 500px;
+    margin: 0 auto;
+  }
 }
 
 :root {
@@ -218,17 +230,21 @@ body {
 }
 
 .polaroidContainer {
-  background-color: white;
+  background-color: #e0d9ca;
   margin-bottom: 2rem;
-  /* padding: 0.8rem; */
-  height: 19rem;
+  height: 30rem;
+  padding-bottom: 12rem;
 }
 
 .polaroidContainer image {
   background-color: white;
   margin-bottom: 2rem;
   width: 80%;
-  height: 18rem;
+  height: 30rem;
   padding: 0.1rem;
   height: 16rem;
+   border: 1px solid #ccc; /* Adiciona uma borda sutil para um efeito de papel */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra leve para profundidade */
+  border-radius: 8px; /* Arredonda os cantos para suavidade */
+  overflow: hidden; 
 }

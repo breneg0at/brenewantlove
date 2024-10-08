@@ -2,6 +2,7 @@
 const mockData = [
   {
     title: "Casamento",
+    description: "Eu te amo muito",
     date: "2023",
     imageUrl: "https://cdn0.casamentos.com.br/article-vendor/8379/3_2/960/jpg/mari-leo-previas-49_13_178379-166013221645741.jpeg",
     id: "772358"
