@@ -229,19 +229,7 @@ body {
   font-weight: 400;
 }
 
-.polaroidContainer {
-  background-color: #e0d9ca;
-  margin-bottom: 2rem;
-  height: 18rem;
-  
-}
-
-.polaroidContainer image {
-  background-color: white;
-  margin-bottom: 2rem;
-  width: 80%;
-  height: 18rem;
-  padding: 0.1rem;
-  height: 16rem;
-  
+.polaridContainer {
+  position: relative; /* Para garantir que a moldura se posicione corretamente */
+  overflow: hidden; /* Para esconder partes da imagem que estão fora da moldura */
 }

@@ -3,54 +3,42 @@ import React, { useState } from 'react';
 import Header from "@/app/components/header";
 import mockData from "@/app/home/mock/mockData";
 import Image from "next/image";
+import html2canvas from "html2canvas-pro";
 import Modal from "@/app/components/modal";
 import shareButton from "@/assets/sharebutton.png";
-import html2canvas from "html2canvas-pro";
-
+import moldura from "@/assets/moldura.png"
 
 const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
   const { albumId } = params;
   const album = mockData.find((item) => item.id === albumId);
   const [showModal, setShowModal] = useState(false);
   const [screenshot, setScreenshot] = useState<string | null>(null);
-  // const [activeTab, setActiveTab] = useState<'comTexto' | 'semTexto'>('comTexto');
-  // const [hasDescription, setHasDescription] = useState<boolean>(false);
-  // const [modalTitle, setModalTitle] = useState<string>('Compartilhar seu Polaroid');
+  const [activeTab, setActiveTab] = useState<'comTexto' | 'semTexto'>('comTexto');
+  const [hasDescription, setHasDescription] = useState<boolean>(false); // Estado para verificar descrição
+  const [modalTitle, setModalTitle] = useState<string>('Compartilhar seu Polaroid'); // Estado do título do modal
 
   if (!album) {
     return <p>Álbum não encontrado!</p>;
   }
 
-  const createDivForDownload = async (index: number) => {
+  const handleShare = async (index: number) => {
+    const polaroidElement = document.getElementById(`polaroid-${index}`);
     const clickedImage = mockData[index];
-    
-    const content = document.createElement('div');
-    content.style.width = '400px'; 
-    content.style.height = '600px'; 
-    content.style.background = '#e0d9ca';
-    content.style.padding = '20px';
-    content.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
-    
-    const imageElement = document.createElement('img');
-    imageElement.src = clickedImage.imageUrl;
-    imageElement.style.width = '100%'; 
-    content.appendChild(imageElement);
 
     if (clickedImage.description) {
-      const textElement = document.createElement('p');
-      textElement.innerText = clickedImage.description;
-      textElement.style.marginTop = '10px';
-      content.appendChild(textElement);
+      setHasDescription(true);
+      setModalTitle("Como você quer compartilhar seu Polaroid?");
+    } else {
+      setHasDescription(false);
+      setModalTitle("Compartilhar seu Polaroid");
     }
 
-    document.body.appendChild(content);
-
-    const canvas = await html2canvas(content, { scale: 2 });
-    const imgData = canvas.toDataURL("image/png");
-    setScreenshot(imgData);
-    setShowModal(true);
-
-    document.body.removeChild(content);
+    if (polaroidElement) {
+      const canvas = await html2canvas(polaroidElement, { scale: 2 });
+      const imgData = canvas.toDataURL("image/png");
+      setScreenshot(imgData);
+      setShowModal(true);
+    }
   };
 
   const handleDownload = () => {
@@ -87,48 +75,79 @@ const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
       <Header dynamicText={"Casamento"} />
       <div className="grid grid-cols-2 gap-4 p-3 w-full">
         {mockData.map((image, index) => (
-          <div key={index} className="relative">
-            <div className="polaroidContainer bg-white p-3 shadow-md">
-              <Image
-                src={image.imageUrl}
-                alt={image.title}
-                width={130}
-                height={130}
-                className="object-cover  w-full h-[130px] mb-2"
-              />
-            </div>
-            <button
-              className="focus:outline-none p-2 absolute bottom-10 left-2"
-              onClick={() => createDivForDownload(index)}
-            >
-              <Image
-                src={shareButton}
-                alt="Share Button"
-                width={28}
-                height={28}
-                className="transition-transform duration-300 hover:scale-105"
-              />
-            </button>
+          <div key={index} className="relative h-[190px]" id={`polaroid-${index}`}>
+          <Image
+            src={moldura}
+            alt={image.title}
+            width={300}
+            height={300}
+            className="absolute inset-0 w-full h-[190px] z-0"
+          />
+  
+          <div className="relative p-3 z-10">
+            <Image
+              src={image.imageUrl}
+              alt={image.title}
+              width={130}
+              height={130}
+              className="object-cover w-full h-[130px]"
+            />
           </div>
+
+  <button
+    className="focus:outline-none p-2 absolute bottom-2 left-2 z-20"
+    onClick={() => handleShare(index)}
+  >
+    <Image
+      src={shareButton}
+      alt="Share Button"
+      width={28}
+      height={28}
+      className="transition-transform duration-300 hover:scale-105"
+    />
+  </button>
+</div>
         ))}
       </div>
 
       <Modal
         isOpen={showModal}
         onClose={() => setShowModal(false)}
-        title={"Compartilhe"}
+        title={modalTitle} 
       >
         {screenshot && (
           <div className='flex flex-col gap-5'>
-            <div className="p-3 shadow-md">
-              <Image
-                src={screenshot}
-                alt="Polaroid Screenshot"
-                className="object-cover w-full h-[300px] mb-2"
-                width={300}
-                height={600}
-              />
+            {hasDescription && ( 
+              <div className="flex primaryButton p-1">
+                <button
+                  className={`text-2xl w-1/2 px-4 py-2 transition-colors duration-500 ease-in ${activeTab === 'comTexto' ? "bg-[var(--primary-color)] text-white"
+                : "bg-[var(--bg-color)] text-white"}`}
+                  onClick={() => setActiveTab('comTexto')}
+                >
+                  Polaroid com texto
+                </button>
+                <button
+                  className={`text-2xl w-1/2 px-4 py-2 transition-colors duration-500 ease-in ${activeTab === 'semTexto' ? "bg-[var(--primary-color)] text-white"
+                : "bg-[var(--bg-color)] text-white"}`}
+                  onClick={() => setActiveTab('semTexto')}
+                >
+                  Polaroid sem texto
+                </button>
+              </div>
+            )}
+
+            <div className={`relative`}>
+              <div className="h-[350px]">
+                <Image
+                  src={screenshot}
+                  alt="Polaroid Screenshot"
+                  className="w-full"
+                  width={300}
+                  height={300}
+                />
+              </div>
             </div>
+
             <div className="flex flex-row gap-2">
               <button
                 className="bg-green-500 text-white px-4 py-2"
