@@ -75,13 +75,13 @@ const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
       <Header dynamicText={"Casamento"} />
       <div className="grid grid-cols-2 gap-4 p-3 w-full">
         {mockData.map((image, index) => (
-          <div key={index} className="relative h-[190px]" id={`polaroid-${index}`}>
+          <div key={index} className="relative h-[220px]" id={`polaroid-${index}`}>
           <Image
             src={moldura}
             alt={image.title}
             width={300}
             height={300}
-            className="absolute inset-0 w-full h-[190px] z-0"
+            className="absolute inset-0 w-full h-[220px] z-0"
           />
   
           <div className="relative p-3 z-10">
@@ -90,12 +90,12 @@ const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
               alt={image.title}
               width={130}
               height={130}
-              className="object-cover w-full h-[130px]"
+              className="object-cover w-full h-[177px]"
             />
           </div>
 
   <button
-    className="focus:outline-none p-2 absolute bottom-2 left-2 z-20"
+    className="focus:outline-none p-2 absolute bottom-0 left-2 z-20"
     onClick={() => handleShare(index)}
   >
     <Image
@@ -137,11 +137,11 @@ const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
             )}
 
             <div className={`relative`}>
-              <div className="h-[350px]">
+              <div className="h-[400px]">
                 <Image
                   src={screenshot}
                   alt="Polaroid Screenshot"
-                  className="w-full"
+                  className="w-[100%] h-[400px]"
                   width={300}
                   height={300}
                 />
