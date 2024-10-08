@@ -5,11 +5,11 @@ import Image from "next/image";
 import divider from "@/assets/Linea.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useRouter } from "next/navigation"; 
+import { useRouter } from "next/navigation";
 import AddButton from "./AddButton";
 
 const Album = () => {
-  const router = useRouter(); 
+  const router = useRouter();
 
   useEffect(() => {
     AOS.init({
@@ -20,7 +20,6 @@ const Album = () => {
   }, []);
 
   const handleAlbumClick = (albumId: string) => {
-    
     router.push(`/albums/${albumId}`);
   };
 

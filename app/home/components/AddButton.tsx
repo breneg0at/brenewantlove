@@ -9,7 +9,6 @@ const AddButton: React.FC = () => {
 
   return (
     <div className="flex flex-row w-full justify-end fixed bottom-8 right-1 container pr-8 pl-8">
-
       <button
         className="focus:outline-none rounded-full p-5"
         onClick={() => setShowFormModal(true)}

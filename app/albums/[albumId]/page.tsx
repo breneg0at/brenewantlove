@@ -1,21 +1,25 @@
-'use client';
-import React, { useState } from 'react';
+"use client";
+import React, { useState } from "react";
 import Header from "@/app/components/header";
 import mockData from "@/app/home/mock/mockData";
 import Image from "next/image";
 import html2canvas from "html2canvas-pro";
 import Modal from "@/app/components/modal";
 import shareButton from "@/assets/sharebutton.png";
-import moldura from "@/assets/moldura.png"
+import moldura from "@/assets/moldura.png";
 
 const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
   const { albumId } = params;
   const album = mockData.find((item) => item.id === albumId);
   const [showModal, setShowModal] = useState(false);
   const [screenshot, setScreenshot] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<'comTexto' | 'semTexto'>('comTexto');
+  const [activeTab, setActiveTab] = useState<"comTexto" | "semTexto">(
+    "comTexto",
+  );
   const [hasDescription, setHasDescription] = useState<boolean>(false); // Estado para verificar descrição
-  const [modalTitle, setModalTitle] = useState<string>('Compartilhar seu Polaroid'); // Estado do título do modal
+  const [modalTitle, setModalTitle] = useState<string>(
+    "Compartilhar seu Polaroid",
+  ); // Estado do título do modal
 
   if (!album) {
     return <p>Álbum não encontrado!</p>;
@@ -75,61 +79,71 @@ const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
       <Header dynamicText={"Casamento"} />
       <div className="grid grid-cols-2 gap-4 p-3 w-full">
         {mockData.map((image, index) => (
-          <div key={index} className="relative h-[220px]" id={`polaroid-${index}`}>
-          <Image
-            src={moldura}
-            alt={image.title}
-            width={300}
-            height={300}
-            className="absolute inset-0 w-full h-[220px] z-0"
-          />
-  
-          <div className="relative p-3 z-10">
+          <div
+            key={index}
+            className="relative h-[220px]"
+            id={`polaroid-${index}`}
+          >
             <Image
-              src={image.imageUrl}
+              src={moldura}
               alt={image.title}
-              width={130}
-              height={130}
-              className="object-cover w-full h-[177px]"
+              width={300}
+              height={300}
+              className="absolute inset-0 w-full h-[220px] z-0"
             />
-          </div>
 
-  <button
-    className="focus:outline-none p-2 absolute bottom-0 left-2 z-20"
-    onClick={() => handleShare(index)}
-  >
-    <Image
-      src={shareButton}
-      alt="Share Button"
-      width={28}
-      height={28}
-      className="transition-transform duration-300 hover:scale-105"
-    />
-  </button>
-</div>
+            <div className="relative p-3 z-10">
+              <Image
+                src={image.imageUrl}
+                alt={image.title}
+                width={130}
+                height={130}
+                className="object-cover w-full h-[177px]"
+              />
+            </div>
+
+            <button
+              className="focus:outline-none p-2 absolute bottom-0 left-2 z-20"
+              onClick={() => handleShare(index)}
+            >
+              <Image
+                src={shareButton}
+                alt="Share Button"
+                width={28}
+                height={28}
+                className="transition-transform duration-300 hover:scale-105"
+              />
+            </button>
+          </div>
         ))}
       </div>
 
       <Modal
         isOpen={showModal}
         onClose={() => setShowModal(false)}
-        title={modalTitle} 
+        title={modalTitle}
       >
         {screenshot && (
-          <div className='flex flex-col gap-5'>
-            {hasDescription && ( 
+          <div className="flex flex-col gap-5">
+            {hasDescription && (
               <div className="flex primaryButton p-1">
                 <button
-                  className={`text-2xl w-1/2 px-4 py-2 transition-colors duration-500 ease-in ${activeTab === 'comTexto' ? "bg-[var(--primary-color)] text-white"
-                : "bg-[var(--bg-color)] text-white"}`}
-                  onClick={() => setActiveTab('comTexto')}
+                  className={`text-2xl w-1/2 px-4 py-2 transition-colors duration-500 ease-in ${
+                    activeTab === "comTexto"
+                      ? "bg-[var(--primary-color)] text-white"
+                      : "bg-[var(--bg-color)] text-white"
+                  }`}
+                  onClick={() => setActiveTab("comTexto")}
                 >
                   Polaroid com texto
                 </button>
                 <button
-                  className={`text-2xl w-1/2 px-4 py-2 transition-colors duration-500 ease-in ${activeTab === 'semTexto' ? "bg-[var(--primary-color)] text-white"
-                : "bg-[var(--bg-color)] text-white"}`}
-                  onClick={() => setActiveTab('semTexto')}
+                  className={`text-2xl w-1/2 px-4 py-2 transition-colors duration-500 ease-in ${
+                    activeTab === "semTexto"
+                      ? "bg-[var(--primary-color)] text-white"
+                      : "bg-[var(--bg-color)] text-white"
+                  }`}
+                  onClick={() => setActiveTab("semTexto")}
                 >
                   Polaroid sem texto
                 </button>
