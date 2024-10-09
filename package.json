@@ -18,6 +18,7 @@
     "@mui/x-date-pickers": "^7.18.0",
     "aos": "^2.3.4",
     "dayjs": "^1.11.13",
+    "dom-to-image": "^2.6.0",
     "framer-motion": "^11.9.0",
     "html2canvas": "^1.4.1",
     "html2canvas-pro": "^1.5.8",
@@ -25,10 +26,13 @@
     "react": "^18",
     "react-dom": "^18",
     "react-qr-code": "^2.0.15",
+    "react-screen-capture": "^1.1.1",
+    "use-react-screenshot": "^4.0.0",
     "yarn": "^1.22.22"
   },
   "devDependencies": {
     "@types/aos": "^3.0.7",
+    "@types/dom-to-image": "^2.6.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

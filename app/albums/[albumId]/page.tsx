@@ -19,7 +19,13 @@ const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
   const [hasDescription, setHasDescription] = useState<boolean>(false); // Estado para verificar descrição
   const [modalTitle, setModalTitle] = useState<string>(
     "Compartilhar seu Polaroid",
-  ); // Estado do título do modal
+  );
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null); // Estado para o índice selecionado
+
+  const selectedImage =
+    selectedIndex !== null
+      ? mockData.find((image, index) => index === selectedIndex)
+      : null;
 
   if (!album) {
     return <p>Álbum não encontrado!</p>;
@@ -27,6 +33,7 @@ const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
 
   const handleShare = async (index: number) => {
     const polaroidElement = document.getElementById(`polaroid-${index}`);
+    const polaroidElementShare = document.getElementById(`polaroid-${index}-share`);
     const clickedImage = mockData[index];
 
     if (clickedImage.description) {
@@ -37,12 +44,26 @@ const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
       setModalTitle("Compartilhar seu Polaroid");
     }
 
-    if (polaroidElement) {
-      const canvas = await html2canvas(polaroidElement, { scale: 2 });
+    setTimeout(async () => {
+          if (polaroidElementShare) {
+      console.log("brenee")
+      setSelectedIndex(index);
+      const canvas = await html2canvas(polaroidElementShare, { scale: 2 });
       const imgData = canvas.toDataURL("image/png");
       setScreenshot(imgData);
       setShowModal(true);
     }
+    }, 100);
+
+    if (polaroidElement) {
+      console.log("brenee F")
+      setSelectedIndex(index);
+      const canvas = await html2canvas(polaroidElement, { scale: 2 });
+      const imgData = canvas.toDataURL("image/png");
+      setScreenshot(imgData);
+      setShowModal(true);
+    } 
+    
   };
 
   const handleDownload = () => {
@@ -77,11 +98,11 @@ const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
   return (
     <div className="flex flex-col items-center">
       <Header dynamicText={"Casamento"} />
-      <div className="grid grid-cols-2 gap-4 p-3 w-full">
+      <div className="flex flex-col gap-8 p-3 w-[320px]">
         {mockData.map((image, index) => (
           <div
             key={index}
-            className="relative h-[220px]"
+            className="relative h-[320px]"
             id={`polaroid-${index}`}
           >
             <Image
@@ -89,7 +110,7 @@ const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
               alt={image.title}
               width={300}
               height={300}
-              className="absolute inset-0 w-full h-[220px] z-0"
+              className="absolute inset-0 w-full h-[320px] z-0"
             />
 
             <div className="relative p-3 z-10">
@@ -98,7 +119,7 @@ const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
                 alt={image.title}
                 width={130}
                 height={130}
-                className="object-cover w-full h-[177px]"
+                className="object-cover w-full h-[265px]"
               />
             </div>
 
@@ -150,8 +171,8 @@ const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
               </div>
             )}
 
-            <div className={`relative`}>
-              <div className="h-[400px]">
+            <div className={`relative h-[360px] mb-4`} id={`polaroid-${selectedIndex}`}>
+              {/* <div className="h-[400px]">
                 <Image
                   src={screenshot}
                   alt="Polaroid Screenshot"
@@ -159,7 +180,27 @@ const AlbumDetail = ({ params }: { params: { albumId: string } }) => {
                   width={300}
                   height={300}
                 />
-              </div>
+              </div> */}
+              {selectedImage && (
+                <>
+                  <Image
+                    src={moldura}
+                    alt={selectedImage.title}
+                    width={300}
+                    height={300}
+                    className="absolute inset-0 w-[360px] h-[360px] z-0"
+                  />
+                  <div className="pl-4 pt-[1rem] relative z-10">
+                    <Image
+                      src={selectedImage.imageUrl}
+                      alt={selectedImage.title}
+                      width={130}
+                      height={130}
+                      className="w-[340px] h-[292px]"
+                    />
+                  </div>
+                </>
+              )}
             </div>
 
             <div className="flex flex-row gap-2">

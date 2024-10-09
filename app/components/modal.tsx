@@ -38,7 +38,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
           exit={{ opacity: 0 }}
         >
           <motion.div
-            className="flex flex-col gap-6 pt-10 bg-[var(--bg-color)] w-[90vw] h-auto rounded-lg shadow-lg p-6 mx-auto"
+            className="flex flex-col gap-6 pt-10 bg-[var(--bg-color)] w-[100vw] h-auto rounded-lg shadow-lg p-2 mx-auto"
             variants={modalVariants}
             initial="hidden"
             animate="visible"
